@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class PrimaryController {
 
@@ -16,9 +17,12 @@ public class PrimaryController {
     
     @FXML
     private ListView<String> listViewShows;
+    
+    @FXML
+    private ObservableList<String> theItems;
 
     public void initialize(){
-        ObservableList<String> theItems = listViewShows.getItems();
+        theItems = listViewShows.getItems();
         theItems.add("What We Do in the Shadows");
         theItems.add("Superstore");
     }
@@ -29,7 +33,7 @@ public class PrimaryController {
     
     @FXML
     private void nameButtonPressed(){
-        ObservableList<String> theItems = listViewShows.getItems();
+        theItems = listViewShows.getItems();
         String theName = showName.getText();
         theItems.add(theName);  
         showName.clear();
@@ -37,7 +41,15 @@ public class PrimaryController {
     
     @FXML
     private void listClear(){
-        ObservableList<String> theItems = listViewShows.getItems();
+        theItems = listViewShows.getItems();
         theItems.clear();
+    }
+    
+    @FXML
+    protected void listItemClicked(MouseEvent event){
+        theItems = listViewShows.getItems();
+        int listIndex = listViewShows.getSelectionModel().getSelectedIndex();
+        if(listIndex >= 0 && listIndex < theItems.size())
+            System.out.println("Selected item: " + theItems.get(listIndex));
     }
 }

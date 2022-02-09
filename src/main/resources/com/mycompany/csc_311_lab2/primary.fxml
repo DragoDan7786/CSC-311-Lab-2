@@ -12,7 +12,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <ListView fx:id="listViewShows" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="listViewShows" onMouseClicked="#listItemClicked" prefHeight="200.0" prefWidth="200.0" />
       <Label text="Insert Show Name" />
       <TextField fx:id="showName" />
       <Button fx:id="showNameButton" mnemonicParsing="false" onAction="#nameButtonPressed" text="Add Show" />
